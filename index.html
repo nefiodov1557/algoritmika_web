@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/algoritmika_web/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Алгоритмика — учебная система</title>
+    <script>
+      // Выполняется до загрузки CSS и React, чтобы первый кадр имел нужную тему.
+      (() => {
+        let preference = 'system'
+        try {
+          const saved = localStorage.getItem('algoritmika-ui-theme')
+          if (saved === 'light' || saved === 'dark') preference = saved
+        } catch { /* При недоступном хранилище используем тему ОС. */ }
+        const dark = preference === 'dark' ||
+          (preference === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.themePreference = preference
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+      })()
+    </script>
+    <script type="module" crossorigin src="/algoritmika_web/assets/index-BbCXkILW.js"></script>
+    <link rel="stylesheet" crossorigin href="/algoritmika_web/assets/index-qcxgZCYk.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
